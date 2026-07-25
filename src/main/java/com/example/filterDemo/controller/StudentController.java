@@ -1,6 +1,7 @@
 package com.example.filterDemo.controller;
 
 import com.example.filterDemo.dto.Student;
+import com.example.filterDemo.dto.StudentResponseDTO;
 import com.example.filterDemo.service.StudentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,10 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createStudent(@RequestBody Student student){
-        studentService.createStudent(student);
+    public ResponseEntity<StudentResponseDTO> createStudent(@RequestBody Student student){
+        StudentResponseDTO responseDTO=studentService.createStudent(student);
 
-        return  ResponseEntity.ok("DONE");
+        return  ResponseEntity.ok( responseDTO);
     }
 
 }

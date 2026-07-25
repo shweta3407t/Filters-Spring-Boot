@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.UUID;
 
-@Component
+//@Component
 @Order(2)
 public class LoggingFilter implements Filter {
 
@@ -19,19 +19,19 @@ public class LoggingFilter implements Filter {
             ServletResponse response,
             FilterChain chain) throws IOException, ServletException
     {
-        //4.request time measure
-        long startTime=System.currentTimeMillis();
-
         HttpServletRequest httpServletRequest=(HttpServletRequest) request;
         HttpServletResponse httpServletResponse=(HttpServletResponse) response;
 
-        //3.generate request id
 
+        //4.request time measure
+        long startTime=System.currentTimeMillis();
+
+        //3.generate request id(set header in response)
         String requestId=UUID.randomUUID().toString();
 
         httpServletResponse.setHeader("X-Request-ID" , requestId);
 
-      //1.request log
+        //1.request log
         System.out.println("Incoming Request : "
                 +httpServletRequest.getMethod()+" "
                 +httpServletRequest.getRequestURI());
@@ -42,18 +42,13 @@ public class LoggingFilter implements Filter {
         finally {
             long duration=System.currentTimeMillis()-startTime;
 
-            //response status log
+            //2.response status log
             System.out.println("Response status : " +
                     httpServletResponse.getStatus());
 
             System.out.println("API Response time : " + duration +" millisecond");
 
         }
-
-
-
-
-
 
 
 

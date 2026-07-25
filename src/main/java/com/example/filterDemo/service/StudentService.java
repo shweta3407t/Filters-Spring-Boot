@@ -1,6 +1,7 @@
 package com.example.filterDemo.service;
 
 import com.example.filterDemo.dto.Student;
+import com.example.filterDemo.dto.StudentResponseDTO;
 import com.example.filterDemo.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,12 @@ public class StudentService {
         this.studentRepository=s;
     }
 
-    public void createStudent(Student student){
-        System.out.println("Student created");
-        System.out.println(student.getName());
-        System.out.println(student.getEmail());
+    public StudentResponseDTO createStudent(Student student){
+
+        StudentResponseDTO responseDTO=new StudentResponseDTO();
+         responseDTO.setName(student.getName());
+         responseDTO.setMessage("Student is saved successfully");
+
+         return responseDTO;
     }
 }
