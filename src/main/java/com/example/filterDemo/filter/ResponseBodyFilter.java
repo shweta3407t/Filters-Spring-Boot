@@ -9,7 +9,7 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 import java.io.IOException;
 
 
-@Component
+//@Component
 public class ResponseBodyFilter implements Filter {//sending httpsServletResponse wrap  --> dispatcher servet  ( instead of httpsServletResponse)
 
     @Override
